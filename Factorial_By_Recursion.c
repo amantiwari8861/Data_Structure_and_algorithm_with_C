@@ -15,7 +15,7 @@ int main()
 {
     int num=0;
     printf("enter the no. \n");
-    scanf("%d",&num);//5
+    scanf("%d",&num);
     int result=factorial(num);
     printf("the result is %d \n",result);
     return 0;
