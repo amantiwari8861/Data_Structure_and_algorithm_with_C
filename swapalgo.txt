@@ -1,0 +1,11 @@
+//swapping with 3rd variable
+
+step 1:  Start
+step 2:  accept 2 numbers in variable num1 , num2 and set num3=0
+step 3:  set num3=num1
+step 4:  set num1=num2
+step 5:  set num2=num3
+step 6:  display the values of num1 and num2 
+step 7:  end.
+
+//h.w swapping without 3rd variable algo ?  armstrong no. algo and flowchart
