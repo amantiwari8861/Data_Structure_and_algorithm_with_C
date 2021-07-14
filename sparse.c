@@ -27,8 +27,7 @@ int main()
                 sparse[2][k]=matr1[i][j];
                 k++;
             }
-        }
-        
+        }   
     }
     printf("the matrix is :\n");
     for (int i = 0; i < 3; i++)
