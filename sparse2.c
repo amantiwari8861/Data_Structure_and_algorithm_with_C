@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #define SUB_MAX 10
 #define MAX 20
