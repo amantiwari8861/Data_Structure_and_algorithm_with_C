@@ -45,10 +45,10 @@ void create_sparse(int a[SUB_MAX][SUB_MAX], int row, int column, int b[MAX][3])
         {
             if (a[i][j] != 0)
             {
-                b[k][0] = i;
-                b[k][1] = j;
-                b[k][2] = a[i][j];
-                k++;
+                b[k][0] = i;//row 
+                b[k][1] = j;//column
+                b[k][2] = a[i][j];//value
+                k++;//count total no. of values
             }
         }
         b[0][2] = k - 1;
@@ -60,8 +60,13 @@ void print_sparse(int b[MAX][3])
     int i, column;
     column = b[0][2];
     printf("\nSparse form - list of 3 triples\n\n");
+    printf("row    column  values \n");
+    printf("---   -----    ----\n");
     for (i = 0; i <= column; i++)
     {
+        if(i==1)
+        printf("---   -----    ----\n");
         printf("%d\t%d\t%d\n", b[i][0], b[i][1], b[i][2]);
     }
 }
+//h.w deletion insertion updation in array
