@@ -1,2 +1,4 @@
 # /mylog.txt
 # mylog.txt
+logs/mylog.log
+*.log
