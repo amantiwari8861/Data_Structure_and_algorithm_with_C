@@ -4,7 +4,7 @@ int inputArray(int arr[MAX])
 {
     int size;
     printf("enter the size of array \n");
-    scanf("%d",&size);
+    scanf("%d",&size);//5
     printf("enter the element in array \n");
     for (int i = 0; i < size; i++)
     {
