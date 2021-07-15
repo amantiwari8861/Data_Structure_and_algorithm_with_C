@@ -24,6 +24,7 @@ void insertArray(int arr[MAX],int size)
         arr[i] = arr[i - 1];
  
     arr[pos - 1] = num;
+    arr[size+1]='\0';
 }
 void printArray(int arr[MAX])
 {
