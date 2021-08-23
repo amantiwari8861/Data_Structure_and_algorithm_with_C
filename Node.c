@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
+
+//node creation 
 struct node
 {
 	int data;
