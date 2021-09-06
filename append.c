@@ -1,11 +1,10 @@
-// make a linked list
 #include<stdio.h>
 #include<stdlib.h>
 struct node
 {
 	int data;
 	struct node *next; 
-}*start,*cn;
+}*start,*cn,*last,*head;
 void createNode()
 {
     struct node *newNode;
@@ -19,14 +18,32 @@ void createNode()
     scanf("%d",&newNode->data);
     fflush(stdin);
     newNode->next=NULL;
-    cn=newNode;
+    start=newNode;
+    head=newNode;
+}
+void appendNode()
+{
+    struct node *append;
+    append=(struct node*)malloc(sizeof(struct node));
+    if (append==NULL)
+    {
+        printf("unable to allocate the memory to newNode!");
+        exit(1);
+    }
+    printf("enter the value : ");
+    scanf("%d",&append->data);
+    fflush(stdin);
+    append->next=NULL;
+    last=append;
+    last->next=append;
 }
 void printList()
 {
     cn=start;
+    int count=0;
     while (cn != NULL)
     {
-        printf("the data in node is %d \n",cn->data);
+        printf("the data in node %d is %d \n",++count,cn->data);
         cn=cn->next;
     }  
 }
@@ -38,6 +55,7 @@ int main()
     {
         printf("1. create first node.\n");
         printf("2. print list.\n");
+        printf("3. append node \n");
         printf("enter ur choice :");
         scanf("%d",&choice);
         fflush(stdin);
@@ -46,6 +64,8 @@ int main()
             case 1:createNode();
                     break;
             case 2: printList();
+                    break;
+            case 3: appendNode();
                     break;
             default:printf("there is no choice like this !");
                     break;
