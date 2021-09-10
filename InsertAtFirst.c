@@ -4,7 +4,7 @@ struct Node
 {
     int data;
     struct Node *link;
-}*cn,*last;
+}*cn,*last,*head;
 
 struct Node *start=NULL;
 struct Node* createNode()
@@ -29,6 +29,15 @@ struct Node* createNode()
         node1->link=NULL;
     }
     return node1;
+}
+void InsertAtFirst()
+{
+    struct Node *node1;
+    node1=createNode();
+    head=start;
+    start=node1;
+    start->link=head;
+    head=start;
 }
 void appendNode()
 {
@@ -73,6 +82,7 @@ int main()
         printf("1. create first node.\n");
         printf("2. print list.\n");
         printf("3. append node \n");
+        printf("4. insert node at beginning \n");
         printf("enter ur choice :");
         scanf("%d",&choice);
         fflush(stdin);
@@ -83,6 +93,8 @@ int main()
             case 2: printList();
                     break;
             case 3: appendNode();
+                    break;
+            case 4: InsertAtFirst();
                     break;
             default:printf("there is no choice like this !");
                     break;
