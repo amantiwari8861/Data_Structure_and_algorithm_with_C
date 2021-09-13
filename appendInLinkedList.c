@@ -4,7 +4,7 @@ struct Node
 {
     int data;
     struct Node *link;
-}*cn,*last;
+}*cn,*last,*head;
 
 struct Node *start=NULL;
 struct Node* createNode()
@@ -20,21 +20,13 @@ struct Node* createNode()
     printf("enter the data :");
     scanf("%d",&node1->data);
     fflush(stdin);
-    node1->link=NULL;
-    if (start==NULL)
-    {
-        printf("creating new List \n");
-        start=node1;
-        last=node1;
-        node1->link=NULL;
-    }
     return node1;
 }
 void appendNode()
 {
     struct Node *newNode;
     newNode=createNode();
-    if (start==NULL)
+    if(start==NULL)
     {
         printf("creating new List \n");
         start=newNode;
@@ -53,6 +45,12 @@ void appendNode()
 		last=newNode;
 		newNode->link=NULL;
     }
+}
+
+void close()
+{
+    printf("Thank you! for choosing us \n");
+    exit(0);
 }
 void printList()
 {
@@ -73,16 +71,19 @@ int main()
         printf("1. create first node.\n");
         printf("2. print list.\n");
         printf("3. append node \n");
+        printf("4. close \n");
         printf("enter ur choice :");
         scanf("%d",&choice);
         fflush(stdin);
         switch (choice)
         {
-            case 1: createNode();
+            case 1: appendNode();
                     break;
             case 2: printList();
                     break;
             case 3: appendNode();
+                    break;
+            case 4: close();
                     break;
             default:printf("there is no choice like this !");
                     break;
