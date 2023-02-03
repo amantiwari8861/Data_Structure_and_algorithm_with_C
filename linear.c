@@ -19,6 +19,7 @@ int main()
         {
             printf("found at position %d \n",i);
             flag=1;
+            // break;
         }
     }
     if (flag==0)
