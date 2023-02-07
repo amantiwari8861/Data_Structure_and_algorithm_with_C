@@ -109,6 +109,5 @@ void recreateMatrix(int b[][3],int rearr[][SUB_MAX])
         }
         printf("\n");
     }
-    
-    
+
 }
