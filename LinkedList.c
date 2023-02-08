@@ -19,7 +19,7 @@ void createNode()
     scanf("%d",&newNode->data);
     fflush(stdin);
     newNode->next=NULL;
-    cn=newNode;
+    start=newNode;
 }
 void printList()
 {
