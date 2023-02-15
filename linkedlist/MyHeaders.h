@@ -22,4 +22,4 @@ struct Node
 {
     int data;
     struct Node *next;
-}*head,*tail,*cn;
+}*head,*tail,*cn,*temp;

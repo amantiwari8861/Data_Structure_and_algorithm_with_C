@@ -1,4 +1,5 @@
 #include "MyHeaders.h"
+
 void addLast()
 {
     struct Node *newnode;
@@ -10,6 +11,7 @@ void addLast()
     if (head == NULL)
     {
         head = newnode;
+        temp=newnode;
         tail = newnode;
         printf(GREEN "Added First Element !!\n" RESET);
     }
@@ -151,4 +153,15 @@ void deleteAtPos()
         }
         printf(GREEN "%d Element Deleted !!\n" RESET, pos);
     }
+}
+void printReverseList(struct Node* temp2)
+{
+    if(temp2==NULL)
+        return;
+    printReverseList(temp2->next);
+    printf(" %d ",temp2->data);
+}
+void reverseList(struct Node* head2 )
+{
+    
 }

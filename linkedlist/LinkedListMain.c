@@ -10,9 +10,12 @@ int main()
         printf("\t\t\t1.Add Node \n");
         printf("\t\t\t2.Print List \n");
         printf("\t\t\t3.Add at Position \n");
-        printf("\t\t\t4.Delete from Last \n");
-        printf("\t\t\t5.Delete from pos \n");
-        printf("\t\t\t6.Exit \n");
+        printf("\t\t\t4.Delete from First \n");
+        printf("\t\t\t5.Delete from Last \n");
+        printf("\t\t\t6.Delete from pos \n");
+        printf("\t\t\t7.print Reverse list \n");
+        printf("\t\t\t8.Reverse list \n");
+        printf("\t\t\t9.Exit \n");
 
         printf("\n\t\t\tEnter choice :");
         scanf("%d%*c", &choice);
@@ -29,12 +32,21 @@ int main()
             addAtPos();
             break;
         case 4:
-            deleteLast();
+            deleteFirst();
             break;
         case 5:
-            deleteAtPos();
+            deleteLast();
             break;
         case 6:
+            deleteAtPos();
+            break;
+        case 7:
+            printReverseList(temp);
+            break;
+        case 8:
+            reverseList(head);
+            break;
+        case 9:
             exit(0);
             break;
 
