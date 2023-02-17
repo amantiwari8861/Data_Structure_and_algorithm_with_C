@@ -11,7 +11,7 @@ void addLast()
     if (head == NULL)
     {
         head = newnode;
-        temp=newnode;
+        temp = newnode;
         tail = newnode;
         printf(GREEN "Added First Element !!\n" RESET);
     }
@@ -154,14 +154,52 @@ void deleteAtPos()
         printf(GREEN "%d Element Deleted !!\n" RESET, pos);
     }
 }
-void printReverseList(struct Node* temp2)
+void printReverseList(struct Node *temp2)
 {
-    if(temp2==NULL)
+    if (temp2 == NULL)
         return;
     printReverseList(temp2->next);
-    printf(" %d ",temp2->data);
+    printf(" %d ", temp2->data);
 }
-void reverseList(struct Node* head2 )
+
+struct Node* reverseList(struct Node *head2)
 {
-    
+    if (head2->next == NULL || head2 == NULL)
+    {
+        return head2;
+    }
+    struct Node* cn=head2;
+    struct Node* prev=NULL;
+    recReverse(head2,cn,prev);
+}
+void recReverse(struct Node* head2,struct Node* cn,struct Node* prev)
+{
+    if(cn==NULL)
+    {
+        head2=prev;
+        return;
+    }
+    struct Node* forward=cn->next;
+    recReverse(head2,forward,cn);
+    cn->next=prev;
+}
+struct Node* reverse_recursion(struct Node* head)
+{
+    // if only one node or the last node of the list
+    if (head == NULL || head->next == NULL)
+    {
+        printf("returning head %d \n",head->data);
+        return head;
+    }
+    struct Node* new_head = reverse_recursion(head->next);
+    printf("returning new_head %d \n",new_head->data);
+    //update the next pointer of the current node
+    struct Node* cn=head -> next;
+    printf("returning cn %d \n",cn->data);
+    printf(" head data -> %d \n",head->data);
+    cn -> next = head;
+    //make the current node the last node
+    head -> next = NULL;
+    //return the new head node of the reversed list
+    return new_head;
 }

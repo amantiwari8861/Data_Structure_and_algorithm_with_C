@@ -44,7 +44,7 @@ int main()
             printReverseList(temp);
             break;
         case 8:
-            reverseList(head);
+            head=reverse_recursion(head);
             break;
         case 9:
             exit(0);

@@ -23,3 +23,4 @@ struct Node
     int data;
     struct Node *next;
 }*head,*tail,*cn,*temp;
+void recReverse(struct Node*,struct Node*,struct Node*);
