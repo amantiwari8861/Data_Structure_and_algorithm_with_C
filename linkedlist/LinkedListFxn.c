@@ -183,6 +183,8 @@ void recReverse(struct Node* head2,struct Node* cn,struct Node* prev)
     recReverse(head2,forward,cn);
     cn->next=prev;
 }
+
+
 struct Node* reverse_recursion(struct Node* head)
 {
     // if only one node or the last node of the list
