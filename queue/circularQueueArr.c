@@ -6,22 +6,23 @@ int front,rear;
 
 void print()
 {
-    if (front==-1 && rear==-1)
-    {
-        printf("\nQueue is Empty !!\n");
-        return;
-    }
-    for (int i = 0; i < MAX; i++)
-    {
-        if(line[i]==-1 || line[i]==0)
-            continue;
-        printf(" at %dth postion :%d \n",i,line[i]);
-    }
-    
-    // for (int i = front; i != rear; i = (i + 1) %MAX )
+    // if (front==-1 && rear==-1)
     // {
-    //     printf(" %d ",line[i]);
+    //     printf("\nQueue is Empty !!\n");
+    //     return;
     // }
+    // for (int i = 0; i < MAX; i++)
+    // {
+    //     if(line[i]==-1 || line[i]==0)
+    //         continue;
+    //     printf(" at %dth postion :%d \n",i,line[i]);
+    // }
+    int i;
+    for (i = front; i != rear; i = (i + 1) %MAX )
+    {
+        printf(" %d ",line[i]);
+    }
+    printf("%d \n",line[i]);
 }
 void enqueue(int data)
 {
