@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct node *buildBinary();
+struct node *buildBinary(int[]);
 void printTree(struct node *);
 
 struct node
@@ -12,42 +12,35 @@ struct node
  int totalnodes=0;
 int main()
 {
+    int arr[]={1,2,-1,-1,3,-1,-1};
     struct node *root;
-    root = buildBinary();
-    // 10 3 -1 -1 5 -1 -1
+    root = buildBinary(arr);
+
     printTree(root);
 
-    printf("\ntotal nodes is :%d",totalnodes);
     return 0;
 }
-struct node *buildBinary()
+struct node *buildBinary(int arr[])
 {
     int data;
-    if (totalnodes==0)
+    data=arr[totalnodes++];
+    if (data==-1)
     {
-        printf("Enter Root :");
-    }
-    
-    scanf("%d", &data);
-
-    if (data == -1)
         return NULL;
-    totalnodes++;
+    }
+        
     struct node *p = (struct node *)malloc(sizeof(struct node));
 
-    printf("Enter left Node :");
     p->data = data;
-    p->left = buildBinary();
+    p->left = buildBinary(arr);
 
-    printf("Enter right Node :");
     p->data = data;
-    p->right = buildBinary();
+    p->right = buildBinary(arr);
 
     return p;
 }
 void printTree(struct node *root)
 {
-
     if (root != NULL)
     {
         printf(" %d ", root->data);

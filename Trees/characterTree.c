@@ -1,56 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct node *buildBinary();
+struct node *buildBinary(char[]);
 void printTree(struct node *);
 
 struct node
 {
-    int data;
+    char data;
     struct node *left;
     struct node *right;
 };
  int totalnodes=0;
 int main()
 {
+    char arr[]={'A','B','D','\0','H','\0','\0','E','\0','\0','C','F','\0','\0','G','I','\0','\0','\0'};
     struct node *root;
-    root = buildBinary();
-    // 10 3 -1 -1 5 -1 -1
+    root = buildBinary(arr);
+
     printTree(root);
 
-    printf("\ntotal nodes is :%d",totalnodes);
     return 0;
 }
-struct node *buildBinary()
+struct node *buildBinary(char arr[])
 {
-    int data;
-    if (totalnodes==0)
+    char data;
+    data=arr[totalnodes++];
+    if (data=='\0')
     {
-        printf("Enter Root :");
-    }
-    
-    scanf("%d", &data);
-
-    if (data == -1)
         return NULL;
-    totalnodes++;
+    }   
+        
     struct node *p = (struct node *)malloc(sizeof(struct node));
 
-    printf("Enter left Node :");
     p->data = data;
-    p->left = buildBinary();
+    p->left = buildBinary(arr);
 
-    printf("Enter right Node :");
     p->data = data;
-    p->right = buildBinary();
+    p->right = buildBinary(arr);
 
     return p;
 }
 void printTree(struct node *root)
 {
-
     if (root != NULL)
     {
-        printf(" %d ", root->data);
+        printf(" %c ", root->data);
         printTree(root->left);
         printTree(root->right);
     }
