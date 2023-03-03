@@ -22,7 +22,7 @@ int main()
     //     / \
     //    1   6
     //   / \
-    //  5   2
+    //  5   2 
 
     printf("Pre-Order : ");
     preOrder(root); // 4  1  5  2  6
