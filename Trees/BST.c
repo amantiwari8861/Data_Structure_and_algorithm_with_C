@@ -36,8 +36,8 @@ int main()
 
     struct node *result = NULL;
 
-    while (userActive == 'Y' || userActive == 'y')
-
+    // while (userActive == 'Y' || userActive == 'y')
+    while (1)
     {
 
         printf("\n\n------- Binary Search Tree ------\n");
@@ -155,7 +155,7 @@ int main()
         case 9:
 
             printf("\n\nProgram was terminated\n");
-
+            exit(0);
             break;
 
         default:
@@ -165,11 +165,11 @@ int main()
             break;
         }
 
-        printf("\n__________\nDo you want to continue? ");
+        // printf("\n__________\nDo you want to continue? ");
 
-        fflush(stdin);
+        // fflush(stdin);
 
-        scanf(" %c", &userActive);
+        // scanf(" %c", &userActive);
     }
 
     return 0;
@@ -259,10 +259,12 @@ struct node *delete(struct node *root, int key)
     }
     if (key < root->data)
     {
+        printf("going to left of %d \n",root->data);
         root->left = delete (root->left, key);
     }
     else if (key > root->data)
     {
+        printf("going to right of %d \n",root->data);
         root->right = delete (root->right, key);
     }
     else
@@ -271,6 +273,7 @@ struct node *delete(struct node *root, int key)
         {
             struct node *temp = root->right;
             free(root);
+            printf("%d temp data right \n",temp->data);
             return temp;
         }
         else if (root->right == NULL)
@@ -278,13 +281,13 @@ struct node *delete(struct node *root, int key)
 
             struct node *temp = root->left;
             free(root);
+            printf("%d temp data left \n",temp->data);
             return temp;
         }
         struct node *temp = smallest_node(root->right);
         root->data = temp->data;
         root->right = delete (root->right, temp->data);
     }
-
     return root;
 }
 
