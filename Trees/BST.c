@@ -4,7 +4,6 @@
 
 struct node
 {
-
     int data;
     struct node *left;
     struct node *right;
@@ -93,14 +92,11 @@ int main()
             data = get_data();
 
             if (search(data) == 1)
-
             {
 
                 printf("\nData was found!\n");
             }
-
             else
-
             {
 
                 printf("\nData does not found!\n");
@@ -113,7 +109,6 @@ int main()
             result = largest_node(root);
 
             if (result != NULL)
-
             {
 
                 printf("\nLargest Data: %d\n", result->data);
@@ -259,12 +254,12 @@ struct node *delete(struct node *root, int key)
     }
     if (key < root->data)
     {
-        printf("going to left of %d \n",root->data);
+        printf("going to left of %d \n", root->data);
         root->left = delete (root->left, key);
     }
     else if (key > root->data)
     {
-        printf("going to right of %d \n",root->data);
+        printf("going to right of %d \n", root->data);
         root->right = delete (root->right, key);
     }
     else
@@ -273,7 +268,7 @@ struct node *delete(struct node *root, int key)
         {
             struct node *temp = root->right;
             free(root);
-            printf("%d temp data right \n",temp->data);
+            printf("%d temp data right \n", temp->data);
             return temp;
         }
         else if (root->right == NULL)
@@ -281,7 +276,7 @@ struct node *delete(struct node *root, int key)
 
             struct node *temp = root->left;
             free(root);
-            printf("%d temp data left \n",temp->data);
+            printf("%d temp data left \n", temp->data);
             return temp;
         }
         struct node *temp = smallest_node(root->right);

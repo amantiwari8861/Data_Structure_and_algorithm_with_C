@@ -32,7 +32,6 @@ void deleteArray(int arr[MAX],int size)
     pos=searchElement(arr,num);
     for (int i = pos; i <=size; i++)
         arr[i]=arr[i+1];
- 
 }
 
 void printArray(int arr[MAX])

@@ -35,7 +35,6 @@ void read_matrix(int a[SUB_MAX][SUB_MAX], int row, int column)
         }
     }
 }
-
 void create_sparse(int a[SUB_MAX][SUB_MAX], int row, int column, int b[MAX][3])
 {
     int i, j, k;
@@ -57,7 +56,6 @@ void create_sparse(int a[SUB_MAX][SUB_MAX], int row, int column, int b[MAX][3])
         b[0][2] = k - 1;
     }
 }
-
 void print_sparse(int b[MAX][3])
 {
     int i,total = b[0][2];
