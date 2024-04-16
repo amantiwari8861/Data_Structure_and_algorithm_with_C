@@ -68,7 +68,6 @@ void isFull(int line[])
         printf("queue is not full!\n");
     }
 }
-
 int main()
 {
     int line[MAX];
