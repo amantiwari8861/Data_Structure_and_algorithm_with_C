@@ -6,7 +6,6 @@ struct Node
     int data;
     struct Node* next;
 }*head,*tail;
-
 void addNode()
 {
     struct Node *newNode=(struct Node*)malloc(sizeof(struct Node));
@@ -132,8 +131,118 @@ void addAtPos()
     
     
 }
+void deleteFirst()
+{
+    if (head==NULL)
+    {
+        printf("list doesn't exist!\n");
+        return;
+    }
+    
+    struct Node *temp=head;
+    head=head->next;
+    free(temp);
+    printf("first element deleted!\n");
+}
+void deleteLast()
+{
+    if (head==NULL)
+    {
+        printf("list doesn't exist!\n");
+        return;
+    }
+    struct Node *cn=head;
+    while (cn->next->next != NULL)
+    {
+        cn=cn->next;
+    }
+    // printf("Data :%d",cn->data);
+    free(tail);
+    cn->next=NULL;
+    tail=cn;
+    printf("last element is deleted!\n");
+}
+void deleteFrompos()
+{
+    int pos;
+    printf("enter position of element to be deleted!:");
+    scanf("%d",&pos);
+
+    if (pos<=0)
+    {
+        printf("position can't be negative or zero\n");
+    }
+    else if (pos>=countLength()+1)
+    {
+        printf("list length is smaller than position \n");
+    }
+    else
+    {
+        if (pos==1)
+        {
+            deleteFirst();
+        }
+        else if (pos==countLength())
+        {
+            deleteLast();
+        }
+        else
+        {
+            struct Node* cn=head,*temp;
+
+            for (int i = 1; i <= countLength(); i++)
+            {
+                if (i==pos-1)
+                {
+                    temp=cn->next;
+                    cn->next=temp->next;
+                    free(temp);
+                    printf("deleted from position %d \n",pos);
+                    return;
+                }
+                cn=cn->next;
+            }
+        }
+    }
+    printf("deleted from position %d \n",pos);
+}
+void search()
+{
+    int key;
+    printf("enter element to be searched:");
+    scanf("%d",&key);
+
+    struct Node *cn=head;
+    for (int  i = 1; cn!=NULL; i++)
+    {
+        if (cn->data==key)
+        {
+            printf("found at position :%d\n",i);
+            return;
+        }
+        cn=cn->next;
+    }
+    printf("element not found in list\n");
+}
+void printReverse(struct Node *cn)
+{
+    if (cn==NULL)
+    {
+        return;
+    }
+    else
+    {
+        printReverse(cn->next);
+        printf("%d",cn->data);
+        if (cn->data!=head->data)
+        {
+            printf(",");
+        }
+    }   
+}
 int main()
 {
+    struct Node *cn=NULL;
     int choice;
     do
     {
@@ -142,6 +251,11 @@ int main()
         printf("2. print list\n");
         printf("3. Add node at starting\n");
         printf("4. Add node in middle\n");
+        printf("5. delete node from starting\n");
+        printf("6. delete node from last\n");
+        printf("7. delete node from position\n");
+        printf("8. search in list \n");
+        printf("9. print list in reverse \n");
         printf("0. choice\n");
 
         printf("enter ur choice:");
@@ -160,6 +274,24 @@ int main()
             break;
         case 4:
             addAtPos();
+            break;
+        case 5:
+            deleteFirst();
+            break;
+        case 6:
+            deleteLast();
+            break;
+        case 7:
+            deleteFrompos();
+            break;
+        case 8:
+            search();
+            break;
+        case 9:
+            cn=head;
+            printf("the list is :[");
+            printReverse(cn);
+            printf("]\n");
             break;
         case 0:
             exit(0);
