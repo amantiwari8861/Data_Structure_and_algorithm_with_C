@@ -35,7 +35,7 @@ void enqueue(int data)
         if(front==-1)
             front++;
 
-        rear=(rear+1)%MAX;
+        rear=(rear+1)%MAX; //4+1%5 -> 0
         line[rear]=data;
         printf("front ->%d rear -> %d \n",front,rear);
     }    
@@ -50,7 +50,7 @@ void dequeue()
     {
         line[front]=-1;
         printf("during deque front ->%d rear -> %d \n",front,rear);
-        front=(front+1)%MAX;
+        front=(front+1)%MAX;//0+1%5
     }    
 }
 int main()
@@ -64,14 +64,14 @@ int main()
     enqueue(30);
     enqueue(40);
     enqueue(50);
-    enqueue(60);//Full
+    // enqueue(60);//Full
 
     dequeue();
-    dequeue();
+    // dequeue();
 
     enqueue(60);
     enqueue(70);
-    enqueue(80);//Must be Full !!
+    // enqueue(80);//Must be Full !!
 
 
     print();

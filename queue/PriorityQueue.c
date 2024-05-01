@@ -60,12 +60,12 @@ void enqueue()
             {
                 back = newNode; // Update back if newNode is the last node
             }
+            // 4(3),5(2),6(1),7(4),8(5)
         }
         printf("Added in priority queue\n");
     }
     count++;
 }
-
 void dequeue()
 {
     struct Node *temp = front;
