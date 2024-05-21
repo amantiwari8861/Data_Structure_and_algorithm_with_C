@@ -60,7 +60,7 @@ void enqueue()
             {
                 back = newNode; // Update back if newNode is the last node
             }
-            // 4(3),5(2),6(1),7(4),8(5)
+            // 4(3),5(2),6(1),7(5),8(4)
         }
         printf("Added in priority queue\n");
     }

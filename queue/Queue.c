@@ -121,7 +121,7 @@ int main()
         printf("4. peek in queue\n");
         printf("5. is queue empty\n");
         printf("6. is queue full\n");
-        printf("0. choice\n");
+        printf("0. exit\n");
 
         printf("enter ur choice:");
         scanf("%d", &choice);

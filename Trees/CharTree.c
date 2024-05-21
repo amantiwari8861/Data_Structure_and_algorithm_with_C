@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 struct node *buildBinary();
-void printTree(struct node *);
+void printTreePreOrder(struct node *);
 
 struct node
 {
-    int data;
+    char data;
     struct node *left;
     struct node *right;
 };
@@ -15,7 +15,7 @@ int main()
     struct node *root;
     root = buildBinary();
     // 10 3 -1 -1 5 -1 -1
-    printTree(root);
+    printTreePreOrder(root);
 
     printf("\ntotal nodes is :%d",totalnodes);
     return 0;
@@ -28,9 +28,8 @@ struct node *buildBinary()
         printf("Enter Root :");
     }
     
-    scanf("%d", &data);
-
-    if (data == -1)
+    scanf("%c%*c", &data);
+    if (data=='x' || data=='X')
         return NULL;
     totalnodes++;
     struct node *p = (struct node *)malloc(sizeof(struct node));
@@ -45,14 +44,14 @@ struct node *buildBinary()
 
     return p;
 }
-void printTree(struct node *root)
+void printTreePreOrder(struct node *root)
 {
 
     if (root != NULL)
     {
-        printf(" %d ", root->data);
-        printTree(root->left);
-        printTree(root->right);
+        printf(" %c ", root->data);
+        printTreePreOrder(root->left);
+        printTreePreOrder(root->right);
     }
 }
 
