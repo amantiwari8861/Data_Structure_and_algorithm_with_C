@@ -2,6 +2,7 @@
     "files.associations": {
         "*.java": "java",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "bstfunctions.h": "c"
     }
 }
