@@ -1,7 +1,7 @@
 #include "BSTfunctions.h"
 int main()
 {
-    int choice;
+    int choice,key;
     do
     {
         system("cls");
@@ -13,12 +13,14 @@ int main()
         printf("6. delete\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        scanf("%d",&choice);
         fflush(stdin);
         switch (choice)
         {
         case 1:
-            root = addNode(root);
+            printf("enter data to be inserted:");
+            scanf("%d",&key);
+            root = addNode(root,key);
             break;
         case 2:
             printf("Pre-Order :");
@@ -48,7 +50,7 @@ int main()
             break;
         }
         printf("Press any key to continue...");
-        getchar();
+        getch();
     } while (choice != 0);
     return 0;
 }
