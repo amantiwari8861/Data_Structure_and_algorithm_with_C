@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int num,key,flag=0;
+    int num,key,isFound=0;
     printf("enter the size of array\n");
     scanf("%d",&num);
     int arr[num];
@@ -15,12 +15,12 @@ int main()
         if (key==arr[i])
         {
             printf("found at position %d \n",i);
-            flag=1;
-            // break;
+            isFound=1;
         }
     }
-    if (flag==0)
-        printf("key not found in array !\n");
-    return 0;
+    if (isFound==0)
+    {
+        printf("%d not found in array\n",key);
+    }
+   return 0;
 }
-// 
