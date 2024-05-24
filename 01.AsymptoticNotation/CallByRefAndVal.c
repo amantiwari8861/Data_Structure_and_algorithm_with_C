@@ -12,6 +12,7 @@
 //     printf("Val = %d in main fxn\n",val);
 //     return 0;
 // }
+
 void change(int arr[]) //non-primitive data type uses pass by reference
 {
     arr[0]=10;

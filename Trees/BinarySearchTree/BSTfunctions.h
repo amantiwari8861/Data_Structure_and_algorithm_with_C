@@ -28,7 +28,7 @@ struct Node* addNode(struct Node* cn,int key)
         printf("going left of %d \n",cn->data);
         cn->left=addNode(cn->left,key);
     }
-    else if (key > cn->data)
+    else if (key >= cn->data)
     {
         printf("going right of %d \n",cn->data);
         cn->right=addNode(cn->right,key);
@@ -63,7 +63,46 @@ void postOrder(struct Node *cn)
     postOrder(cn->right);
     printf("%d ",cn->data);
 }
-void searchNode(struct Node *cn){
-    
+int searchNode(struct Node *cn,int key){
+    if (cn==NULL)
+    {
+        return -1;
+    }
+    if (key==cn->data)
+    {
+        printf("found %d in tree \n",cn->data);
+        return 1;
+    }
+    if (key < cn->data)
+    {
+        printf("searching in left of %d \n",cn->data);
+        searchNode(cn->left,key);
+    }
+    else if (key > cn->data)
+    {
+        printf("searching in right of %d \n",cn->data);
+        searchNode(cn->right,key);
+    }
 }
-void deleteNode(struct Node *cn){}
+struct Node* deleteNode(struct Node *cn,int key)
+{
+    if (cn==NULL)
+    {
+        return cn;
+    }
+    if (key < cn->data)
+    {
+        printf("searching in left of %d \n",cn->data);
+        cn->left=searchNode(cn->left,key);
+    }
+    else if (key > cn->data)
+    {
+        printf("searching in right of %d \n",cn->data);
+        cn->right=searchNode(cn->right,key);
+    }
+    if (key==cn->data)
+    {
+        printf("deleting %d from tree \n",cn->data);
+        return NULL;
+    }
+}

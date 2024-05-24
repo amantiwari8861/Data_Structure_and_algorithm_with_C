@@ -15,26 +15,17 @@ int inputArray(int arr[MAX]) //call by reference(address)
 }
 int binarySearch(int arr[], int low, int high, int key)
 {
-    if (high >= low) {
+    if (high >= low)  //base condition
+    {
         int mid = low + (high - low) / 2;
-  
-        // If the element is present at the middle
-        // itself
         if (arr[mid] == key)
             return mid;
   
-        // If element is smaller than mid, then
-        // it can only be present in left subarray
         if (arr[mid] > key)
             return binarySearch(arr, low, mid - 1, key);
   
-        // Else the element can only be present
-        // in right subarray
         return binarySearch(arr, mid + 1, high, key);
     }
-  
-    // We reach here when element is not
-    // present in array
     return -1;
 }
 void print(int result)
@@ -65,8 +56,8 @@ int main()
     // printArray(arr,size);
     printf("enter element to be searched :");
     scanf("%d",&key);
-    int result=binarySearch(arr,0,size-1,key);
-    print(result);
+    // int result=binarySearch(arr,0,size-1,key);
+    // print(result);
     return 0;
 }
 

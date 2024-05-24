@@ -38,10 +38,25 @@ int main()
             printf("\n");
             break;
         case 5:
-            searchNode(root);
+            printf("enter data to be searched:");
+            scanf("%d",&key);
+            if(searchNode(root,key)==-1)
+            {
+                printf("not found in tree\n");
+            }
             break;
         case 6:
-            deleteNode(root);
+            printf("enter data to be deleted:");
+            scanf("%d",&key);
+            struct Node *temp=deleteNode(root,key);
+            if (temp==NULL)
+            {
+                printf("element not found in tree\n");
+            }
+            else
+            {
+                root=temp;
+            }
             break;
         case 0:
             exit(0);
