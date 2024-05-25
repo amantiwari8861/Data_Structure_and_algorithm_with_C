@@ -86,23 +86,51 @@ int searchNode(struct Node *cn,int key){
 }
 struct Node* deleteNode(struct Node *cn,int key)
 {
-    if (cn==NULL)
-    {
+    // Base case
+    if (cn == NULL)
+        return cn;
+
+    // If the key to be deleted is smaller than the cn's key, then it lies in the left subtree
+    if (key < cn->data) {
+        cn->left = deleteNode(cn->left, key);
         return cn;
     }
-    if (key < cn->data)
-    {
-        printf("searching in left of %d \n",cn->data);
-        cn->left=searchNode(cn->left,key);
+    // If the key to be deleted is greater than the cn's key, then it lies in the right subtree
+    else if (key > cn->data) {
+        cn->right = deleteNode(cn->right, key);
+        return cn;
     }
-    else if (key > cn->data)
-    {
-        printf("searching in right of %d \n",cn->data);
-        cn->right=searchNode(cn->right,key);
+
+    // If key is same as cn's key, then this is the node to be deleted
+    // Node with only one child or no child
+    if (cn->left == NULL) {
+        struct Node* temp = cn->right;
+        free(cn);
+        return temp;
     }
-    if (key==cn->data)
-    {
-        printf("deleting %d from tree \n",cn->data);
-        return NULL;
+    else if (cn->right == NULL) {
+        struct Node* temp = cn->left;
+        free(cn);
+        return temp;
     }
+
+    // Node with two children: Get the inorder successor (smallest in the right subtree)
+    struct Node* succParent = cn;
+    struct Node* succ = cn->right;
+    while (succ->left != NULL) {
+        succParent = succ;
+        succ = succ->left;
+    }
+
+    // Copy the inorder successor's content to this node
+    cn->data = succ->data;
+
+    // Delete the inorder successor
+    if (succParent->left == succ)
+        succParent->left = succ->right;
+    else
+        succParent->right = succ->right;
+
+    free(succ);
+    return cn;
 }
