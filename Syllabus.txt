@@ -1,0 +1,10 @@
+array & pointers
+Dynamic memory allocation
+Asymptotioc Notation 
+linear search
+binary search
+bubble sort
+recursion-> head,tail and tree 
+insertion sort
+quick sort 
+Linked list intro 

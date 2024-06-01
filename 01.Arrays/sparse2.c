@@ -19,11 +19,11 @@ int main()
     read_matrix(a, row, column);
     create_sparse(a, row, column, b);
     print_sparse(b);
-    recreateMatrix(b,c);
+    // recreateMatrix(b,c);
     return 0;
 }
 
-void read_matrix(int a[SUB_MAX][SUB_MAX], int row, int column)
+void read_matrix(int a[][SUB_MAX], int row, int column)
 {
     int i, j;
     printf("\nEnter elements of matrix\n");

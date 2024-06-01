@@ -5,7 +5,6 @@
 //     int size=0;
 // printf("enter the size of array \n");
 // scanf("%d",&size);
-
 // printf("enter the elements in array\n");
 // for (int i = 0; i < size; i++)
 // {
@@ -23,33 +22,38 @@ void swap(int a[], int k, int l)
 }
 void printArray(int arr[], int size)
 {
-	printf("New Array: ");
+	printf("Array: [");
 	for (int i = 0; i < size; i++)
 	{
-		printf(" %d  ", arr[i]);
+		printf(" %d ", arr[i]);
+		if (i<size-1)
+			printf(",");
 	}
-	printf("\n");
+	printf("]\n");
 }
-
 void quicksort(int a[], int low, int high)
 {
+	printf("low =%d high=%d \n",low,high);
 	int pivot, i, j;
-	if (low > high)
+	if (low > high) //Base Condition
+	{	
+		printf("both arrow crossed i.e low(%d) is greater than high(%d) \n",low,high);
 		return;
+	}
 	i = low + 1;
 	j = high;
 	pivot = a[low];
 	printf("Now Pivot is :%d \n", pivot);
 	while (i <= j)
 	{
-		while (a[i] <= pivot && i <= high)
+		while (a[i] <= pivot && i <= high) //searching bigger value than pivot from left to right
 		{
-			printf(" %d < %d \n", a[i], pivot);
+			printf("LTR : %d < %d \n", a[i], pivot);
 			i++;
 		}
-		while (a[j] > pivot && j >= low)
+		while (a[j] > pivot && j >= low) //searching smaller value than pivot from right to left
 		{
-			printf(" %d > %d \n", a[j], pivot);
+			printf("RTL: %d > %d \n", a[j], pivot);
 			j--;
 		}
 		if (i < j)
@@ -58,6 +62,10 @@ void quicksort(int a[], int low, int high)
 			swap(a, i, j);
 			printArray(a, 8);
 		}
+	}
+	if(j<i)
+	{
+		printf("breaking the list \n");
 	}
 	if (low < j)
 	{
@@ -72,8 +80,10 @@ int main()
 {
 	int arr[] = {28, 55, 46, 38, 16, 89, 83, 30}, size = 8;
 	// size=input(arr);
-	printArray(arr, 8);
-	quicksort(arr, 0, size - 1);
+	// swap(arr,3,5);// testing functions
+	printf("The unsorted Array is :");
+	printArray(arr, 8);// testing functions
+	quicksort(arr, 0, size - 1);// arr ->Array, 0 -> lowest index ,size-1 -> highest index
 	printArray(arr, size);
 	return 0;
 }
