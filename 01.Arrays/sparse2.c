@@ -6,7 +6,6 @@ void read_matrix(int a[][SUB_MAX], int row, int column);
 void print_sparse(int b[][3]);
 void create_sparse(int a[][SUB_MAX], int row, int column, int b[][3]);
 void recreateMatrix(int b[][3],int rearr[][SUB_MAX]);
-
 int main()
 {
     // if the quantity of non-zeroes is less than 32% then use sparse matrix 
@@ -22,7 +21,6 @@ int main()
     // recreateMatrix(b,c);
     return 0;
 }
-
 void read_matrix(int a[][SUB_MAX], int row, int column)
 {
     int i, j;
