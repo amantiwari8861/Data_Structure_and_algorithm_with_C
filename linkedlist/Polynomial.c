@@ -15,8 +15,6 @@ struct Node *create(struct Node *q)
 {
     int i, n;
     printf("Enter the number of nodes : ");
-    int no=scanf("%d",&n);
-    printf("no. = %d \n",no);
     if (scanf("%d",&n) != 1)
         err_exit("Read error(number of nodes)");
     for (i = 0; i < n; i++)

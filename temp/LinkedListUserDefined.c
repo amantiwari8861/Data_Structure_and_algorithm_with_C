@@ -1,7 +1,14 @@
 #include<stdio.h>
-#include<windows.h>
-#include<conio.h>
 #include<stdlib.h>
+
+#ifdef _WIN32
+    #define CLEAR "cls"
+    #include<windows.h>
+    #include<conio.h>
+#else
+    #define CLEAR "clear"
+#endif
+
 struct Node
 {
     int data;
@@ -75,20 +82,114 @@ void insertAtBetween()
     temp->next=newnode;
     printf("inserted %d at %d position succesfully!\n",newnode->data,pos);
 }
+void deleteFirst()
+{
+    if (head==NULL)
+    {
+        printf("can't delete from empty list\n");
+        return;
+    }
+    struct Node *temp=head;
+    if (temp->next==NULL)
+    {
+        free(temp);
+        head=tail=NULL;
+        printf("only node in LL is deleted\n");
+        return;
+    }
+    head=head->next;
+    free(temp);
+    printf("deleted from beggining of list\n");
+}
+void deleteLast()
+{
+    if (head==NULL)
+    {
+        printf("can't delete from empty list\n");
+        return;
+    }
+    struct Node *temp=head;
+    if (temp->next==NULL)
+    {
+        free(temp);
+        head=tail=NULL;
+        printf("only node in LL is deleted\n");
+        return;
+    }
+    while (temp!=NULL)
+    {
+        if (temp->next->next==NULL)
+        {
+            break; 
+        }
+        temp=temp->next;
+    }
+    printf("temp is pointing %d \n",temp->data);
+    free(tail);
+    tail=temp;
+    tail->next=NULL;
+    printf("last node deleted!\n");
+}
+void deleteBetween()
+{
+    if (head==NULL)
+    {
+        printf("list is empty!\n");
+        return;
+    }
+    int key;
+    printf("enter element to be deleted:");
+    scanf("%d",&key);
+
+    struct Node* cn=head;
+    struct Node *temp=NULL;
+
+    if (cn->next==NULL)
+    {
+        deleteFirst();
+        return;
+    }
+    while (cn!=NULL)
+    {
+        if (cn->next!=NULL)
+        {
+            if (cn->next->data==key)
+            {
+                break;
+            }            
+        }
+        cn=cn->next;
+    }
+    printf("cn is pointing at %d \n",cn->data);
+    if (cn->next->next==NULL)
+    {
+        deleteLast();
+        return;
+    }
+    
+    temp=cn->next;
+    cn->next=temp->next;
+    free(temp);
+    printf("%d deleted \n",key);    
+}
 int main()
 {
     int choice;
+    char ch;
     do
     {
-        system("cls");
+        system(CLEAR);
         printf("1.add last in Linked List\n");
         printf("2.print Linked List\n");
         printf("3.add at begining in Linked List\n");
         printf("4.add at between in Linked List\n");
+        printf("5.delete from last in Linked List\n");
+        printf("6.delete from beginning in Linked List\n");
+        printf("7.delete from between in Linked List\n");
         printf("0.exit\n");
         printf("enter ur choice:");
         scanf("%d",&choice);
-        fflush(stdin);
+        // fflush(stdin);
 
         switch (choice)
         {
@@ -104,6 +205,15 @@ int main()
         case 4:
             insertAtBetween();
             break;
+        case 5:
+            deleteLast();
+            break;
+        case 6:
+            deleteFirst();
+            break;
+        case 7:
+            deleteBetween();
+            break;
         case 0:
             printf("Thankyou visit again!");
             exit(0);
@@ -112,7 +222,8 @@ int main()
             break;
         }
         printf("press any key to continue...");
-        getch();
+        getchar();
+        scanf("%c",&ch);
     } while (choice!=0);
     
     // take 2 input from user let start=50,end=100  then store all prime numbers in a list
