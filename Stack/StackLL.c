@@ -2,15 +2,22 @@
 #include<stdlib.h>
 #include<windows.h>
 #include<conio.h>
+#define N 3
 
 struct Node
 {
     int data;
     struct Node *next;
 }*topElement;
+int len=0;
 
 void push()
 {
+    if (len==N)
+    {
+        printf("stack is full\n");
+        return;
+    }
     struct Node *newNode=(struct Node*)malloc(sizeof(struct Node));
     if(newNode==NULL)
     {
@@ -30,6 +37,7 @@ void push()
         newNode->next=topElement;
         topElement=newNode;
     }
+    ++len;
     printf("%d pushed into stack\n",newNode->data);
 }
 void pop()
@@ -43,10 +51,18 @@ void pop()
     topElement=topElement->next;
     printf("%d popped from stack\n",temp->data);
     free(temp);
+    len--;
 }
 void peek()
 {
-    printf("%d is at the top\n",topElement->data);
+    if (topElement!=NULL)
+    {
+        printf("%d is at the top\n",topElement->data);
+    }
+    else
+    {
+        printf("stack is empty!\n");
+    }
 }
 void printStack(){
     struct Node* cn=topElement;
