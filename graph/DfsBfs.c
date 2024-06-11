@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
 #define MAX_VERTICES 10
 
 // Structure to represent a node in the adjacency list
@@ -112,12 +111,12 @@ int main() {
     // Add edges to the graph
     addEdge(graph, 0, 1);
     addEdge(graph, 0, 2);
+    addEdge(graph, 1, 2);
     addEdge(graph, 1, 3);
-    addEdge(graph, 1, 4);
-    addEdge(graph, 2, 3);
-    addEdge(graph, 2, 5);
-    addEdge(graph, 2, 6);
-    addEdge(graph, 3, 4);
+    addEdge(graph, 2, 4);
+    addEdge(graph, 3, 5);
+    addEdge(graph, 4, 5);
+    addEdge(graph, 5, 6);
 
     printf("DFS traversal starting from vertex 0:\n");
     DFS(graph, 0);
