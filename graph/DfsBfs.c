@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include<windows.h>
 #define MAX_VERTICES 10
 
 // Structure to represent a node in the adjacency list
@@ -48,10 +49,11 @@ void DFSUtil(struct Graph* graph, int v, bool visited[]) {
     // Mark the current node as visited and print it
     visited[v] = true;
     printf("%d ", v);
-
+    Sleep(4000);
     // Recur for all the vertices adjacent to this vertex
     struct Node* current = graph->head[v];
-    while (current) {
+    while (current) 
+    {
         if (!visited[current->data]) {
             DFSUtil(graph, current->data, visited);
         }
@@ -88,7 +90,7 @@ void BFS(struct Graph* graph, int v) {
         // Dequeue a vertex from queue and print it
         int currentVertex = queue[front++];
         printf("%d ", currentVertex);
-
+        Sleep(1000);
         // Get all adjacent vertices of the dequeued vertex
         struct Node* current = graph->head[currentVertex];
         while (current) {
@@ -99,28 +101,31 @@ void BFS(struct Graph* graph, int v) {
             }
             current = current->next;
         }
+        // Sleep(10000);
     }
 }
 
-int main() {
+int main() 
+{
     int V = 7; // Number of vertices in the graph
 
     // Create a graph
     struct Graph* graph = createGraph(V);
 
     // Add edges to the graph
-    addEdge(graph, 0, 1);
     addEdge(graph, 0, 2);
+    addEdge(graph, 0, 1);
     addEdge(graph, 1, 2);
     addEdge(graph, 1, 3);
     addEdge(graph, 2, 4);
     addEdge(graph, 3, 5);
+    addEdge(graph, 3, 4);
     addEdge(graph, 4, 5);
     addEdge(graph, 5, 6);
 
-    printf("DFS traversal starting from vertex 0:\n");
-    DFS(graph, 0);
-    printf("\n");
+    // printf("DFS traversal starting from vertex 0:\n");
+    // DFS(graph, 0);
+    // printf("\n");
 
     printf("BFS traversal starting from vertex 0:\n");
     BFS(graph, 0);

@@ -59,10 +59,11 @@ void addEdge(struct Graph *graph, int src, int dest)
   struct Node *newNode2 = (struct Node *)malloc(sizeof(struct Node));
   newNode2->data = src;
   newNode2->next = graph->head[dest];
-  graph->head[dest] = newNode2;
+
   graph->head[src] = newNode;
-  printGraph(graph);
-  Sleep(10000);
+  graph->head[dest] = newNode2;
+  // printGraph(graph);
+  // Sleep(10000);
 }
 
 
